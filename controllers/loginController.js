@@ -42,7 +42,7 @@ const loginController = async (req, res) => {
 
     // 5. Send token via cookie (tighter options for production)
     res.cookie("token", token, {
-      httpOnly: true,
+    secure:false,
       maxAge: 7 * 24 * 60 * 60 * 1000,
   
     });
