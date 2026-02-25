@@ -16,9 +16,7 @@ connectDB()
 
 app.use(express.static(path.join(__dirname, 'public', 'dist')));
 
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'dist', 'index.html'));
-});
+
 app.use('/api/user', userRouter)
 app.use("/api/chat" , chatRouter)
 app.use("/api/message" , messageRouter)
