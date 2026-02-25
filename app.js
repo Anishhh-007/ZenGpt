@@ -9,14 +9,14 @@ const messageRouter = require("./routs/messageRoutes")
 const path = require("path")
 
 const app = express()
-app.use(express.static(path.join(__dirname , 'dist')))
+app.use(express.static(path.join(__dirname, 'public', 'dist')));
 app.use(cors({origin : "http://localhost:5173" , credentials : true}))
 app.use(cp())
 app.use(express.json())
 connectDB()
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+app.get('(.*)', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'dist', 'index.html'));
 });
 app.use('/api/user', userRouter)
 app.use("/api/chat" , chatRouter)
